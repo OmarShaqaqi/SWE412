@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import "../widgets/password.dart";
+import "./login.dart";
 
-class Signup extends StatelessWidget {
-  const Signup({super.key});
+class SignupScreen extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +32,7 @@ class Signup extends StatelessWidget {
           top: 32,
         ),
         padding: const EdgeInsets.only(
+          top: 32,
           left: 32,
           right: 32,
         ),
@@ -41,6 +45,7 @@ class Signup extends StatelessWidget {
         ),
         child: Center(
           child: Form(
+            key: _formKey,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,6 +68,12 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter your name";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 20,
@@ -79,6 +90,14 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter your email";
+                      } else if (!value.contains("@")) {
+                        return "Please enter a valid email";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 20,
@@ -95,6 +114,18 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter your mobile number";
+                      }
+                      final regExp = RegExp(
+                          r'^(009665|9665|\+9665|05)(5|0|3|6|4|9|1|8|7)[0-9]{7}$'); // check all possabilities later
+
+                      if (!regExp.hasMatch(value)) {
+                        return "Please enter a valid mobile number";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 20,
@@ -111,6 +142,18 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter your date of birth";
+                      }
+                      final dateRegex = RegExp(
+                          r'/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/');
+
+                      if (!dateRegex.hasMatch(value)) {
+                        return "Please enter a date with the format DD/MM/YYYY";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 20,
@@ -133,24 +176,57 @@ class Signup extends StatelessWidget {
                   const SizedBox(height: 20),
                   Center(
                     // Center the button
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Handle form submission
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 32),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                    child: Column(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              print("Form is valid");
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 0, 208, 158),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 80),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                          ),
+                          child: const Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 9, 48, 48),
+                            ),
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 9, 48, 48),
-                        ),
-                      ),
+                        const SizedBox(height: 20),
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              const TextSpan(
+                                text: 'Already have an account?',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              TextSpan(
+                                text: ' Login',
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LoginScreen(),
+                                      ),
+                                    );
+                                  },
+                                style: const TextStyle(color: Colors.blue),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],

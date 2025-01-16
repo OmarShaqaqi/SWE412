@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../widgets/password.dart';
 import "./signup.dart";
+import "./forgot_password.dart";
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -27,6 +28,7 @@ class LoginScreen extends StatelessWidget {
           top: 32,
         ),
         padding: const EdgeInsets.only(
+          top: 32,
           left: 32,
           right: 32,
         ),
@@ -97,13 +99,25 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        const Text(
-                          textAlign: TextAlign.center,
-                          "Forgot Password?",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ForgotPasswordScreen(),
+                              ),
+                            );
+                            
+                          },
+                          child: const Text(
+                            "Forgot Password?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 50),
@@ -125,12 +139,12 @@ class LoginScreen extends StatelessWidget {
                                       ),
                                     );
                                   },
-                                text: 'Sign Up',
+                                text: ' Sign Up',
                                 style: const TextStyle(color: Colors.blue),
                               ),
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
