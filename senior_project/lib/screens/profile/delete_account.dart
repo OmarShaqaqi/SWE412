@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import "../../widgets/custom_bottom_navigation_bar.dart";
 import "../../widgets/bullet_list.dart";
 import "../../widgets/password.dart";
+import "../../widgets/dialog_utils.dart";
 
 class DeleteAccountScreen extends StatefulWidget {
   const DeleteAccountScreen({super.key});
@@ -11,116 +12,26 @@ class DeleteAccountScreen extends StatefulWidget {
 }
 
 class _DeleteAccountState extends State<DeleteAccountScreen> {
-  Future<void> _deleteDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            actionsAlignment: MainAxisAlignment.center,
-            titlePadding: const EdgeInsets.all(16),
-            title: const Text(
-              "Delete Account",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            content: Container(
-              height: 180,
-              child: const Column(children: [
-                Text(
-                  "Are you sure you want to delete your account?",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                    "By deleting your account, you agree that you understand the consequences of this "
-                    "action and that you agree to permanently delete your account and all associated data. ")
-              ]),
-            ),
-            actions: <Widget>[
-              Column(
-                children: [
-                  SizedBox(
-                    width: 200,
-                    height: 60,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Handle account deletion
-                        Navigator.of(context).pop(); // Close dialog
-                        print("Account deleted");
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
-                      child: const Text(
-                        "Yes, Delete my Account",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 9, 48, 48),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    width: 200,
-                    height: 60,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop(); // Close dialog
-                        print("canceld");
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 223, 247, 226),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
-                      child: const Text(
-                        "Cancel",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 9, 48, 48),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          );
-        });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-      appBar: AppBar(
-        title: const Center(
-          child: Text(
-            "Forgot Password",
-            style: TextStyle(
-              color: Color.fromARGB(255, 9, 48, 48),
-              fontWeight: FontWeight.bold,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(30),
+        child: AppBar(
+          title: const Text(
+              "Delete Account",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 0, 208, 158),
         ),
-        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
       ),
       extendBody: true,
       body: SingleChildScrollView(
@@ -196,7 +107,7 @@ class _DeleteAccountState extends State<DeleteAccountScreen> {
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
-                    _deleteDialog(context);
+                    deleteDialog(context);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 0, 208, 158),

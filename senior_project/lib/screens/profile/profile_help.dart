@@ -4,6 +4,8 @@ import "../../widgets/faq_list.dart";
 import "../../widgets/contact_us.dart";
 
 class ProfileHelpScreen extends StatefulWidget {
+
+  const ProfileHelpScreen({super.key});
   @override
   State<ProfileHelpScreen> createState() => _ProfileHelpScreen();
 }
@@ -29,17 +31,20 @@ class _ProfileHelpScreen extends State<ProfileHelpScreen>
     return Scaffold(
       backgroundColor:
           const Color.fromARGB(255, 0, 208, 158), // Dark green background
-      appBar: AppBar(
-        title: const Text(
-          "FAQs",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(30),
+        child: AppBar(
+          title: const Text(
+            "FAQs",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 0, 208, 158),
+          elevation: 0,
         ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-        elevation: 0,
       ),
       extendBody: true,
       body: Container(
@@ -71,6 +76,7 @@ class _ProfileHelpScreen extends State<ProfileHelpScreen>
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TabBar(
+                dividerColor: Colors.transparent,
                 controller: _tabController,
                 indicator: BoxDecoration(
                   color: const Color.fromARGB(255, 0, 208, 158),

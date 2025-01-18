@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       title: 'Senior Project',
-      home:  ProfileHelpScreen(),
+      home:  ProfileScreen(),
     );
   }
 }

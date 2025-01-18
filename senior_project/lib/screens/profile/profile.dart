@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../widgets/custom_bottom_navigation_bar.dart';
+import "../../widgets/dialog_utils.dart";
+import "./profile_edit.dart";
+import "./profile_settings.dart";
+import "./profile_help.dart";
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -15,18 +19,21 @@ class _ProfileScreen extends State<ProfileScreen> {
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 208, 158), // Dark green background
-      appBar: AppBar(
-        title: const Text(
-          "Profile",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(20),
+        child: AppBar(
+          title: const Text(
+            "Profile",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 0, 208, 158),
+          elevation: 0,
         ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-        elevation: 0,
-      ),
+      ),extendBody: true,
       body: Stack(
         children: [
           // Light Green Section
@@ -67,6 +74,8 @@ class _ProfileScreen extends State<ProfileScreen> {
                         leading: const Icon(Icons.person, color: Colors.blue),
                         title: const Text("Edit Profile"),
                         onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const ProfileEditScreen()));
                           // Handle action
                         },
                       ),
@@ -74,6 +83,8 @@ class _ProfileScreen extends State<ProfileScreen> {
                         leading: const Icon(Icons.settings, color: Colors.blue),
                         title: const Text("Setting"),
                         onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const ProfileSettingsScreen()));
                           // Handle action
                         },
                       ),
@@ -82,6 +93,8 @@ class _ProfileScreen extends State<ProfileScreen> {
                             const Icon(Icons.help_outline, color: Colors.blue),
                         title: const Text("Help"),
                         onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const ProfileHelpScreen()));
                           // Handle action
                         },
                       ),
@@ -89,7 +102,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                         leading: const Icon(Icons.logout, color: Colors.blue),
                         title: const Text("Logout"),
                         onTap: () {
-                          // Handle action
+                          showLogoutDialog(context);
                         },
                       ),
                     ],

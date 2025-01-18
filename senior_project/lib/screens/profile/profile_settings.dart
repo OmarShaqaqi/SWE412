@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:senior_project/screens/profile/password_settings.dart";
 import "../../widgets/custom_bottom_navigation_bar.dart";
-import  "../forgot_password.dart";
+import "./delete_account.dart";
 
 class ProfileSettingsScreen extends StatelessWidget {
   const ProfileSettingsScreen({super.key});
@@ -13,17 +13,20 @@ class ProfileSettingsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor:
           const Color.fromARGB(255, 0, 208, 158), // Dark green background
-      appBar: AppBar(
-        title: const Text(
-          "Settings",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(30),
+        child: AppBar(
+          title: const Text(
+            "Settings",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 0, 208, 158),
+          elevation: 0,
         ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-        elevation: 0,
       ),
       extendBody: true,
       body: Container(
@@ -98,7 +101,7 @@ class ProfileSettingsScreen extends StatelessWidget {
                 // Navigate to Password Settings screen
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Text("latter")),
+                  MaterialPageRoute(builder: (context) => const DeleteAccountScreen()),
                 );
               },
             ),

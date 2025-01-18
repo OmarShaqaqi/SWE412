@@ -18,17 +18,20 @@ class _ProfileEditState extends State<ProfileEditScreen> {
     return Scaffold(
       backgroundColor:
           const Color.fromARGB(255, 0, 208, 158), // Dark green background
-      appBar: AppBar(
-        title: const Text(
-          "Profile",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(30),
+        child: AppBar(
+          title: const Text(
+            "Profile",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 0, 208, 158),
+          elevation: 0,
         ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-        elevation: 0,
       ),
       extendBody: true,
       body: Stack(
