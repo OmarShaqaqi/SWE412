@@ -4,6 +4,9 @@ import "../../widgets/password.dart";
 import "login.dart";
 
 class SignupScreen extends StatelessWidget {
+
+   SignupScreen({super.key});
+
   final _formKey = GlobalKey<FormState>();
 
   @override
