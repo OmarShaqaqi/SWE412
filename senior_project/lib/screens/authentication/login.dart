@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../widgets/password.dart';
-import "./signup.dart";
-import "./forgot_password.dart";
+import '../../widgets/password.dart';
+import "signup.dart";
+import "forgot_password.dart";
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import "../widgets/password.dart";
-import "./login.dart";
+import "../../widgets/password.dart";
+import "login.dart";
 
 class SignupScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();

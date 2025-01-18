@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import "../screens/signup.dart";
-import "../screens/login.dart";
-import "../screens/forgot_password.dart";
+import "screens/authentication/signup.dart";
+import "screens/authentication/login.dart";
+import "screens/authentication/forgot_password.dart";
 import "screens/profile/profile.dart";
 import "screens/profile/profile_edit.dart";
 import "screens/profile/profile_settings.dart";
-import "./screens/forgot_password.dart";
+import "screens/authentication/forgot_password.dart";
 import "screens/profile/delete_account.dart";
 import "screens/profile/profile_help.dart";
 
