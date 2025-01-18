@@ -7,6 +7,7 @@ import "screens/profile/profile_edit.dart";
 import "screens/profile/profile_settings.dart";
 import "./screens/forgot_password.dart";
 import "screens/profile/delete_account.dart";
+import "screens/profile/profile_help.dart";
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       title: 'Senior Project',
-      home:  DeleteAccountScreen(),
+      home:  ProfileHelpScreen(),
     );
   }
 }
