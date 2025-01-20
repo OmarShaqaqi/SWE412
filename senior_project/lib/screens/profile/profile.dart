@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../widgets/custom_bottom_navigation_bar.dart';
+import "package:senior_project/templates/custom_body_with_image.dart";
+import "package:senior_project/templates/custom_scaffold.dart";
+import '../../templates/custom_bottom_navigation_bar.dart';
 import "../../widgets/dialog_utils.dart";
 import "./profile_edit.dart";
 import "./profile_settings.dart";
@@ -16,38 +18,8 @@ class _ProfileScreen extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
      final screenWidth = MediaQuery.of(context).size.width; 
-
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 208, 158), // Dark green background
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(20),
-        child: AppBar(
-          title: const Text(
-            "Profile",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-          elevation: 0,
-        ),
-      ),extendBody: true,
-      body: Stack(
-        children: [
-          // Light Green Section
-          Container(
-            margin: const EdgeInsets.only(top: 100),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 241, 255, 243), // Light green
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40),
-                topRight: Radius.circular(40),
-              ),
-            ),
-            child: Column(
+     final String image = 'assets/anonymous_profile.png';
+     final content = Column(
               children: [
                 const SizedBox(height: 60), // Space for the profile image overlap
                 // Name and ID Section
@@ -109,21 +81,8 @@ class _ProfileScreen extends State<ProfileScreen> {
                   ),
                 ),
               ],
-            ),
-          ),
-          // Profile Image
-           Positioned(
-            top: 36,
-            left: (screenWidth / 2) - 50,
-            child: const CircleAvatar(
-              radius: 50, // Adjust size
-              backgroundImage:  AssetImage('assets/anonymous_profile.png'),
-              backgroundColor: Colors.white,
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: const CustomBottomNavigationBar(),
-    );
+            );
+
+            return CustomScaffold(title: "Profile", content: CustomBodyWithImage(content: content, image: image,),);
   }
 }

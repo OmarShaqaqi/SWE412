@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import "../../widgets/custom_bottom_navigation_bar.dart";
+import "package:senior_project/templates/custom_scaffold.dart";
+import "../../templates/custom_bottom_navigation_bar.dart";
 import "../../widgets/faq_list.dart";
 import "../../widgets/contact_us.dart";
+import "../../templates/custom_body.dart";
 
 class ProfileHelpScreen extends StatefulWidget {
 
@@ -28,37 +30,7 @@ class _ProfileHelpScreen extends State<ProfileHelpScreen>
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor:
-          const Color.fromARGB(255, 0, 208, 158), // Dark green background
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(30),
-        child: AppBar(
-          title: const Text(
-            "FAQs",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-          elevation: 0,
-        ),
-      ),
-      extendBody: true,
-      body: Container(
-        height: screenHeight,
-        margin: const EdgeInsets.only(top: 100),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 241, 255, 243), // Light green
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40),
-            topRight: Radius.circular(40),
-          ),
-        ),
-        child: Column(
+    final content = Column(
           children: [
             const Text(
               "How can we help you?",
@@ -113,10 +85,8 @@ class _ProfileHelpScreen extends State<ProfileHelpScreen>
               ),
             )
           ],
-        ),
-      ),
+        );
 
-      bottomNavigationBar: const CustomBottomNavigationBar(),
-    );
+        return CustomScaffold(title: "FAQs", content: CustomBody(content: content,),);
   }
 }
