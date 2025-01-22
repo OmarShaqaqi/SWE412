@@ -61,7 +61,7 @@ class CategoriesList extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => GroupItemScreen(name: dummyCategories[index].name),
+                    builder: (context) => CategoryItemScreen(title: dummyCategories[index].name),
                   ),
                 );
               },
