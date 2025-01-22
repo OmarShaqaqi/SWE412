@@ -10,7 +10,9 @@ class CustomBodyGroup extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
+        // Light Green Section (Top Section)
         Container(
+          height: screenHeight * 0.2,
           color: const Color.fromARGB(255, 0, 208, 158),
           child: Column(
             children: [
@@ -107,12 +109,11 @@ class CustomBodyGroup extends StatelessWidget {
             ],
           ),
         ),
-        // Group cards
         Expanded(
           child: Container(
-
             margin: const EdgeInsets.only(top: 20),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            padding: const EdgeInsets.only(
+                top: 32, left: 16, right: 16, bottom: kBottomNavigationBarHeight),
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 241, 255, 243), // Light green
               borderRadius: BorderRadius.only(

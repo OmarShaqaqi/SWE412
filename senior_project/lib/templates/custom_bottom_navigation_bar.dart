@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import "../screens/profile/profile.dart";
+import "../screens/groups/groups.dart";
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -10,6 +12,29 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class _CustomBottomNavigationBar extends State<CustomBottomNavigationBar> {
   @override
+  int _currentIndex = 0; // Tracks the selected index
+
+  // List of screens corresponding to each tab
+  final List<Widget> _screens = [
+    const Text("Soon"),
+    const Text("Soon"),
+    const Text("Soon"),
+    const GroupsScreen(),
+    const ProfileScreen(),
+  ];
+
+  // Function to navigate to the selected screen
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index; // Update selected index
+    });
+    Navigator.pop(context);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => _screens[index]),
+    );
+  }
+
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
@@ -29,6 +54,7 @@ class _CustomBottomNavigationBar extends State<CustomBottomNavigationBar> {
             top: 24,
           ),
           child: BottomNavigationBar(
+            onTap: _onItemTapped,
             backgroundColor: const Color.fromARGB(255, 223, 247, 226),
             type: BottomNavigationBarType.fixed,
             selectedItemColor: const Color.fromARGB(255, 0, 208, 158),
