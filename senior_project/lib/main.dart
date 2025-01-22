@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:senior_project/data/groups_data.dart";
+import "package:senior_project/screens/groups/category_item.dart";
+import "package:senior_project/widgets/groups/specific_category_expense_row.dart";
 import "screens/authentication/signup.dart";
 import "screens/authentication/login.dart";
 import "screens/authentication/forgot_password.dart";
@@ -22,10 +24,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Senior Project',
-      home:  GroupsScreen(),
+      home: CategoryItemScreen(title: "anything"),
     );
   }
 }
-

@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
+import "package:senior_project/screens/groups/category_item.dart";
 import "package:senior_project/templates/custom_scaffold.dart";
-import "../../data/groups_data.dart";
-import "group_item.dart";
+import "../../data/categories_data.dart";
+import "../../screens/groups/group_item.dart";
 import "../../templates/custom_body_group.dart";
-import "add_group.dart";
+import "../../screens/groups/add_group.dart";
 
-class GroupsScreen extends StatelessWidget {
-  const GroupsScreen({super.key});
-
+class CategoriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final content = GridView.builder(
-        itemCount: groups.length + 1, //for the static part (add group)
+        itemCount: dummyCategories.length + 1, //for the static part (add group)
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemBuilder: (context, index) {
-          if (index == groups.length) {
+          if (index == dummyCategories.length) {
             return GestureDetector(
               onTap: () {
                 // Handle the action for adding a new categor
@@ -63,7 +61,7 @@ class GroupsScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => GroupItemScreen(name: groups[index].name),
+                    builder: (context) => GroupItemScreen(name: dummyCategories[index].name),
                   ),
                 );
               },
@@ -78,11 +76,11 @@ class GroupsScreen extends StatelessWidget {
                       borderRadius:
                           BorderRadius.circular(20), // Rounded corners
                     ),
-                    child: groups[index].icon,
+                    child: dummyCategories[index].icon,
                   ),
                   const SizedBox(height: 4), // Space between icon and text
                   Text(
-                    groups[index].name,
+                    dummyCategories[index].name,
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -94,10 +92,6 @@ class GroupsScreen extends StatelessWidget {
             );
           }
         });
-    return CustomScaffold(
-      title: "Groups",
-      content: CustomBodyGroup(
-           content: content),
-    );
+    return content;
   }
 }
