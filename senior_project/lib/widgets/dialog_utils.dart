@@ -509,8 +509,8 @@ Future<void> expenseDetails(BuildContext context) {
                 const SizedBox(height: 10),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start, // Aligns the TextField at the top
+                  crossAxisAlignment: CrossAxisAlignment
+                      .start, // Aligns the TextField at the top
                   children: [
                     Text("Details"),
                     SizedBox(width: 10),
@@ -537,25 +537,25 @@ Future<void> expenseDetails(BuildContext context) {
                   ],
                 ),
                 const SizedBox(height: 30),
-               ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 80),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
-                      child: const Text(
-                        "Save",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 9, 48, 48),
-                        ),
-                      ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 0, 208, 158),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16, horizontal: 80),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
+                  ),
+                  child: const Text(
+                    "Save",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 9, 48, 48),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -586,7 +586,6 @@ Future<void> addExpenses(BuildContext context) {
                   .spaceEvenly, // Dynamically adapts to content height
               children: [
                 const Text("Date"),
-
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -610,8 +609,8 @@ Future<void> addExpenses(BuildContext context) {
                 const SizedBox(height: 10),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start, // Aligns the TextField at the top
+                  crossAxisAlignment: CrossAxisAlignment
+                      .start, // Aligns the TextField at the top
                   children: [
                     Text("Details"),
                     SizedBox(width: 10),
@@ -638,25 +637,25 @@ Future<void> addExpenses(BuildContext context) {
                   ],
                 ),
                 const SizedBox(height: 30),
-               ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 0, 208, 158),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 80),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
-                      child: const Text(
-                        "Save",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 9, 48, 48),
-                        ),
-                      ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 0, 208, 158),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16, horizontal: 80),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
+                  ),
+                  child: const Text(
+                    "Save",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 9, 48, 48),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -666,3 +665,83 @@ Future<void> addExpenses(BuildContext context) {
   );
 }
 
+Future<void> addCategory(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Colors.white,
+        actionsAlignment: MainAxisAlignment.center,
+        titlePadding: const EdgeInsets.all(16),
+        title: const Text(
+          "Add Category",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        content: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment
+                  .spaceEvenly, // Dynamically adapts to content height
+              children: [
+                const TextField(
+                  decoration: InputDecoration(
+                    hintText: "Category name",
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 223, 247, 226),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(18.0),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 0, 208, 158),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                  ),
+                  child: const Text(
+                    "Save",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 9, 48, 48),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 0, 208, 158),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                  ),
+                  child: const Text(
+                    "Cancel",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 9, 48, 48),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}

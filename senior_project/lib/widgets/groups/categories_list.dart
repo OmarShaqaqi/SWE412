@@ -5,6 +5,7 @@ import "../../data/categories_data.dart";
 import "../../screens/groups/group_item.dart";
 import "../../templates/custom_body_group.dart";
 import "../../screens/groups/add_group.dart";
+import "../dialog_utils.dart";
 
 class CategoriesList extends StatelessWidget {
   @override
@@ -17,13 +18,7 @@ class CategoriesList extends StatelessWidget {
           if (index == dummyCategories.length) {
             return GestureDetector(
               onTap: () {
-                // Handle the action for adding a new categor
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AddGroup(),
-                  ),
-                );
+                addCategory(context);
               },
               child: Column(
                 mainAxisSize: MainAxisSize.min,
