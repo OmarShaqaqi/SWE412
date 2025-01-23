@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:senior_project/screens/home/HomeScreen.dart";
 import "screens/authentication/signup.dart";
 import "screens/authentication/login.dart";
 import "screens/authentication/forgot_password.dart";
@@ -20,10 +21,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Senior Project',
-      home:  GroupsScreen(),
+      home: HomeScreen(),
     );
   }
 }
-
