@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CustomBodyGroup extends StatelessWidget {
+class CustomBodyAnalysis extends StatelessWidget {
   final Widget content;
 
-  const CustomBodyGroup({super.key, required this.content});
+  const CustomBodyAnalysis({super.key, required this.content});
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
-        // Light Green Section (Top Section)
+        // Top Section (Balance and Expenses + Progress Bar)
         Container(
           height: screenHeight * 0.2,
           color: const Color.fromARGB(255, 0, 208, 158),
@@ -109,6 +109,7 @@ class CustomBodyGroup extends StatelessWidget {
             ],
           ),
         ),
+        // Main Content Section
         Expanded(
           child: Container(
             margin: const EdgeInsets.only(top: 20),

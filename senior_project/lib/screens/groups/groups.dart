@@ -10,7 +10,6 @@ class GroupsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final content = GridView.builder(
         itemCount: groups.length + 1, //for the static part (add group)
         gridDelegate:
@@ -63,7 +62,8 @@ class GroupsScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => GroupItemScreen(name: groups[index].name),
+                    builder: (context) =>
+                        GroupItemScreen(name: groups[index].name),
                   ),
                 );
               },
@@ -96,8 +96,7 @@ class GroupsScreen extends StatelessWidget {
         });
     return CustomScaffold(
       title: "Groups",
-      content: CustomBodyGroup(
-           content: content),
+      content: CustomBodyGroup(content: content),
     );
   }
 }

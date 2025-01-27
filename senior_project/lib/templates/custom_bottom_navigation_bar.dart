@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:senior_project/screens/analyst/analysis.dart";
 import "../screens/profile/profile.dart";
 import "../screens/groups/groups.dart";
 
@@ -17,7 +18,7 @@ class _CustomBottomNavigationBar extends State<CustomBottomNavigationBar> {
   // List of screens corresponding to each tab
   final List<Widget> _screens = [
     const Text("Soon"),
-    const Text("Soon"),
+    const AnalysisPage(),
     const Text("Soon"),
     const GroupsScreen(),
     const ProfileScreen(),

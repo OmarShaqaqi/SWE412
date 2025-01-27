@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:senior_project/data/groups_data.dart";
+import "package:senior_project/screens/analyst/analysis.dart";
 import "package:senior_project/screens/groups/category_item.dart";
 import "package:senior_project/screens/groups/group_item.dart";
 import "package:senior_project/widgets/groups/specific_category_expense_row.dart";
@@ -14,6 +15,7 @@ import "screens/profile/delete_account.dart";
 import "screens/profile/profile_help.dart";
 import "screens/groups/groups.dart";
 import "screens/groups/add_group.dart";
+import "screens/analyst/analysis.dart";
 
 void main() {
   runApp(const MyApp());
