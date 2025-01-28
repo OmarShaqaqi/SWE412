@@ -29,12 +29,19 @@ class ExpenseCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ThepriceUI(),
-                Text(
-                  "some source",
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w300,
+                Container(
+                  width: 99,
+                  height: double.infinity,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "some source",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
                   ),
                 ),
                 Column(
@@ -44,7 +51,7 @@ class ExpenseCard extends StatelessWidget {
                       style: const TextStyle(
                         color: Color.fromRGBO(0, 104, 255, 1),
                         fontSize: 27,
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                     Text(
@@ -52,7 +59,7 @@ class ExpenseCard extends StatelessWidget {
                       style: const TextStyle(
                         color: Color.fromRGBO(0, 104, 255, 1),
                         fontSize: 13,
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:senior_project/screens/home/NewExpense.dart';
+import 'package:senior_project/screens/home/gourpsUI_home.dart';
 import "../../widgets/custom_bottom_navigation_bar.dart";
 
 class HomeScreen extends StatelessWidget {
@@ -139,7 +140,7 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Column(
                   // add the expense cards here
-                  children: [ExpenseCard(), ExpenseCard(), ExpenseCard()]),
+                  children: [ExpenseCard(), GroupsUiHome()]),
             ),
           ),
         ],
