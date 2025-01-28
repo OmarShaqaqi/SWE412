@@ -6,33 +6,41 @@ class GroupsUiHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 398,
-      height: 51,
-      padding: const EdgeInsets.only(
-        left: 20.0,
-        right: 20.0,
-      ),
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(175, 201, 195, 1),
-        borderRadius: BorderRadius.circular(41.0),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            child: Text(
-              "personal",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
+    return Column(
+      children: [
+        Container(
+          width: 398,
+          height: 51,
+          padding: const EdgeInsets.only(
+            left: 20.0,
+            right: 20.0,
           ),
-          const IconButtonWithState(),
-        ],
-      ),
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(175, 201, 195, 1),
+            borderRadius: BorderRadius.circular(41.0),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                child: Text(
+                  "personal",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              const IconButtonWithState(),
+            ],
+          ),
+        ),
+        SizedBox(
+          width: double.infinity,
+          height: 10,
+        )
+      ],
     );
   }
 }
