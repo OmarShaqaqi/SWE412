@@ -8,19 +8,20 @@ class TransactionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Transactions',
-      content: CustomBodyGroup(
-        content: Column(
-          children: [
-            _buildTransactionSection(
-              title: 'April',
-              transactions: [
-                _TransactionItem(
-                  title: 'Salary',
-                  time: '18:27 - April 30',
-                  category: 'Monthly',
-                  amount: 4000.00,
-                ),
+        title: 'Transactions',
+        content: CustomBodyGroup(
+        content: SingleChildScrollView(
+        child: Column(
+        children: [
+        _buildTransactionSection(
+        title: 'April',
+        transactions: [
+        _TransactionItem(
+        title: 'Salary',
+        time: '18:27 - April 30',
+        category: 'Monthly',
+        amount: 4000.00,
+    ),
                 _TransactionItem(
                   title: 'Groceries',
                   time: '17:00 - April 24',
@@ -56,6 +57,7 @@ class TransactionPage extends StatelessWidget {
           ],
         ),
       ),
+    )
     );
   }
 
