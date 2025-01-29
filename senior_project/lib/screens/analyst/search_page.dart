@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:senior_project/templates/custom_body_search.dart';
+import 'package:senior_project/templates/custom_bottom_navigation_bar.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _SearchPageState extends State<SearchPage> {
     },
     {
       "category": "Travel",
-      "date": "2023-04-29",
+      "date": "2023-04-30",
       "title": "Bus Ticket",
       "amount": -10.00
     },
@@ -70,18 +71,6 @@ class _SearchPageState extends State<SearchPage> {
     final content = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // // Search Bar
-        // TextField(
-        //   decoration: InputDecoration(
-        //     prefixIcon: const Icon(Icons.search),
-        //     hintText: "Search...",
-        //     border: OutlineInputBorder(
-        //       borderRadius: BorderRadius.circular(12),
-        //     ),
-        //   ),
-        // ),
-        // const SizedBox(height: 16),
-
         // Category Dropdown
         DropdownButtonFormField<String>(
           value: selectedCategory,
@@ -103,14 +92,25 @@ class _SearchPageState extends State<SearchPage> {
         ),
         const SizedBox(height: 16),
 
-        // Date Selector
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Date: ${selectedDate.toLocal()}".split(" ")[0],
-              style: const TextStyle(fontSize: 16),
+            Expanded(
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: Text(
+                  "Date: ${selectedDate.toLocal()}".split(" ")[0],
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
             ),
+            const SizedBox(width: 8),
             IconButton(
               icon: const Icon(Icons.calendar_today),
               onPressed: () => _selectDate(context),
@@ -209,11 +209,21 @@ class _SearchPageState extends State<SearchPage> {
             Navigator.pop(context); // Return to the previous page
           },
         ),
-        title: const Text("Search"),
+        title: const Text(
+          "Search",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: const Color(0xFF00D09E), // Match app's color scheme
         centerTitle: true,
       ),
-      body: CustomBodySearch(content: content), // Use CustomBodySearch here
+      body: Container(
+        color: const Color(0xff00d09e), // Match app's color scheme
+        child: CustomBodySearch(content: content),
+      ),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }
