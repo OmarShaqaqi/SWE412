@@ -17,23 +17,40 @@ class _SearchPageState extends State<SearchPage> {
   final List<Map<String, dynamic>> mockData = [
     {
       "category": "Food",
-      "date": "2023-04-30",
+      "date": "2025-01-01",
       "title": "Dinner",
       "amount": -26.00
     },
     {
       "category": "Travel",
-      "date": "2023-04-30",
+      "date": "2025-01-01",
       "title": "Bus Ticket",
       "amount": -10.00
     },
     {
       "category": "Salary",
-      "date": "2023-04-28",
+      "date": "2025-01-01",
       "title": "Monthly Salary",
-      "amount": 2000.00
+      "amount": -2000.00
     },
   ];
+  @override
+  void initState() {
+    super.initState();
+    _filterResults();
+  }
+
+  void _filterResults() {
+    setState(() {
+      results = mockData.where((item) {
+        final categoryMatch =
+            selectedCategory == "All" || item["category"] == selectedCategory;
+        final dateMatch =
+            item["date"] == selectedDate.toLocal().toString().split(" ")[0];
+        return categoryMatch && dateMatch;
+      }).toList();
+    });
+  }
 
   // Open date picker
   Future<void> _selectDate(BuildContext context) async {
@@ -46,6 +63,7 @@ class _SearchPageState extends State<SearchPage> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
+        _filterResults();
       });
     }
   }
@@ -71,7 +89,16 @@ class _SearchPageState extends State<SearchPage> {
     final content = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Category Dropdown
+        // Groups Label and Dropdown
+        const Text(
+          "Groups",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+            color: Color(0xff093030),
+          ),
+        ),
+        const SizedBox(height: 5),
         DropdownButtonFormField<String>(
           value: selectedCategory,
           items: ["All", "Food", "Travel", "Salary"]
@@ -83,15 +110,27 @@ class _SearchPageState extends State<SearchPage> {
           onChanged: (value) {
             setState(() {
               selectedCategory = value!;
+              _filterResults();
             });
           },
           decoration: const InputDecoration(
-            labelText: "Groups",
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
           ),
         ),
         const SizedBox(height: 16),
 
+        // Date Label and Selector
+        const Text(
+          "Date",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: Color(0xff093030),
+          ),
+        ),
+        const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -105,7 +144,7 @@ class _SearchPageState extends State<SearchPage> {
                   border: Border.all(color: Colors.grey),
                 ),
                 child: Text(
-                  "Date: ${selectedDate.toLocal()}".split(" ")[0],
+                  "${selectedDate.toLocal()}".split(" ")[0],
                   style: const TextStyle(fontSize: 16),
                 ),
               ),
@@ -116,53 +155,6 @@ class _SearchPageState extends State<SearchPage> {
               onPressed: () => _selectDate(context),
             ),
           ],
-        ),
-        const SizedBox(height: 16),
-
-        // Income/Expense Toggle
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: RadioListTile<String>(
-                value: "Income",
-                groupValue: reportType,
-                onChanged: (value) {
-                  setState(() {
-                    reportType = value!;
-                  });
-                },
-                title: const Text("Income"),
-              ),
-            ),
-            Expanded(
-              child: RadioListTile<String>(
-                value: "Expense",
-                groupValue: reportType,
-                onChanged: (value) {
-                  setState(() {
-                    reportType = value!;
-                  });
-                },
-                title: const Text("Expense"),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-
-        // Search Button
-        Center(
-          child: ElevatedButton(
-            onPressed: _performSearch,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF00D09E),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            child: const Text("Search"),
-          ),
         ),
         const SizedBox(height: 16),
 
