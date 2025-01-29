@@ -33,7 +33,7 @@ class CustomBodyGroup extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "1000 SAR",
+                          "7783.00 SAR",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -58,7 +58,7 @@ class CustomBodyGroup extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "1000 SAR",
+                          "-1187.40 SAR",
                           style: TextStyle(
                             color: Colors.blue,
                             fontSize: 20,
