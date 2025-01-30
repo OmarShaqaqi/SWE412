@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:senior_project/data/groups_data.dart';
 import 'package:senior_project/screens/home/categorization.dart';
 import 'package:senior_project/screens/profile/profile_edit.dart';
 import "../../widgets/custom_bottom_navigation_bar.dart";
 
-class ExpenseCard extends StatelessWidget {
-  const ExpenseCard({super.key});
+class Groupexpense extends StatelessWidget {
+  const Groupexpense({super.key});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Categorization()));
-
-    // Add your functionality here
+ // Add your functionality here
   },
       child: Column(
         children: [
@@ -36,37 +35,45 @@ class ExpenseCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ThepriceUI(),
-                  Text(
-                    "some source",
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
+                  GroupIcon(),
+                  // ignore: prefer_const_constructors
                   Column(
                     children: [
+                      SizedBox(height: 10,),
                       Text(
-                        "17:00",
+                        "Participant 1",
                         style: const TextStyle(
-                          color: Color.fromRGBO(0, 104, 255, 1),
-                          fontSize: 27,
-                          fontWeight: FontWeight.w300,
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                       Text(
-                        "today",
+                        " 500 SAR",
                         style: const TextStyle(
-                          color: Color.fromRGBO(0, 104, 255, 1),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w300,
+                          color: Colors.blue,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                     ],
                   ),
+                  Text("Food"),
+                  Row(
+                    
+                    children: [
+                      ElevatedButton.icon(onPressed: (){}, 
+                                          label: Icon(Icons.check_circle_outline_sharp),
+                                          ),
+                      
+                      ElevatedButton.icon(onPressed: (){}, 
+                                          label: Icon(Icons.cancel_sharp),
+                                          )
+                    ],
+                  )
                 ],
-              )),
+              )
+            ),
           SizedBox(
             width: double.infinity,
             height: 10,
@@ -76,44 +83,38 @@ class ExpenseCard extends StatelessWidget {
     );
   }
 
-  Container ThepriceUI() {
+  Container GroupIcon() {
     return Container(
       height: double.infinity,
       // decoration: const BoxDecoration(
       //   color: Color.fromRGBO(0, 104, 255, 1),
       // ),
-      margin: const EdgeInsets.only(bottom: 20),
-      child: Row(
+      margin: const EdgeInsets.only(bottom: 5),
+      child: Column(
         children: [
           Container(
-            child: Align(
-              alignment: Alignment.bottomCenter,
+            child: Align(              
+              alignment: Alignment.center,
               child: Container(
-                height: 45,
-                child: Text(
-                  "0",
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 38,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
+                height: 55,
+                child: groups[0].icon,
               ),
             ),
           ),
-          Container(
+                    Container(
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Text(
-                "SAR",
+                "Family",
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 17,
+                  fontSize: 10,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
           ),
+
         ],
       ),
     );

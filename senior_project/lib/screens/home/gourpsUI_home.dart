@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:senior_project/screens/home/categroyUI_home.dart';
 import "../../widgets/custom_bottom_navigation_bar.dart";
 
 class GroupsUiHome extends StatelessWidget {
